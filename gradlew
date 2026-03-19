@@ -1,3 +1,4 @@
 #!/bin/sh
-APP_HOME=$(cd "$(dirname "$0")" && pwd)
-exec "$APP_HOME/gradle/wrapper/gradle-wrapper.jar" "$@"
+set -e
+GRADLE_WRAPPER_JAR="$(dirname "$0")/gradle/wrapper/gradle-wrapper.jar"
+exec java -jar "$GRADLE_WRAPPER_JAR" "$@"
