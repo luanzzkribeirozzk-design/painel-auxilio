@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PAINEL VIP</title>
+<style>
+body{background:#0a0a0a;font-family:Arial,sans-serif;display:flex;justify-content:center;align-items:center;height:100vh;margin:0}
+.painel{background:#111;border:2px solid #ff0000;padding:30px;border-radius:15px;width:350px;box-shadow:0 0 20px #ff0000;color:#fff;text-align:center;position:relative}
+h2{color:#ff0000;margin-bottom:20px;letter-spacing:2px}
+.info-box{background:#1a1a1a;padding:15px;margin:10px 0;border-radius:10px;border:1px solid #ff0000;display:flex;justify-content:space-between;align-items:center}
+.label{font-weight:bold;color:#ff4444}
+.valor{color:#ffffff;font-family:monospace;font-size:1.1em}
+button{background:#ff0000;border:none;padding:8px 15px;border-radius:6px;color:white;cursor:pointer;font-weight:bold;transition:0.3s;outline:none}
+button:active{transform:scale(0.95)}
+button.copiado{background:#00b300}
+</style>
+</head>
+<body>
+<div class="painel" id="painelPrincipal">
+  <h2>🔥 PAINEL VIP 🔥</h2>
+  <div class="info-box">
+    <div><span class="label">User:</span> <span class="valor" id="usuario">Nilson</span></div>
+    <button id="btnUser" onclick="copiarTexto('usuario','btnUser')">Copiar</button>
+  </div>
+  <div class="info-box">
+    <div><span class="label">Senha:</span> <span class="valor" id="senha">Team</span></div>
+    <button id="btnPass" onclick="copiarTexto('senha','btnPass')">Copiar</button>
+  </div>
+</div>
+<script>
+function copiarTexto(idElemento,idBotao){
+  const texto=document.getElementById(idElemento).innerText;
+  const botao=document.getElementById(idBotao);
+  const areaTemp=document.createElement("textarea");
+  areaTemp.value=texto;document.body.appendChild(areaTemp);
+  areaTemp.select();areaTemp.setSelectionRange(0,99999);document.execCommand("copy");
+  document.body.removeChild(areaTemp);
+  const textoOriginal=botao.innerText;botao.innerText="Copiado!";botao.classList.add("copiado");
+  setTimeout(()=>{botao.innerText=textoOriginal;botao.classList.remove("copiado");},2000);
+}
+</script>
+</body>
+</html>
